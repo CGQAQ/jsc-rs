@@ -67,7 +67,7 @@ fn main() {
     .unwrap()
     .to_owned();
   if is_windows {
-    build.flag(&format!("-I{}", &icu_header_dir));
+    build.flag(&format!("-I{}", &icu_header_dir.replace(r#"\"#, "/")));
     println!(
       "cargo:rustc-link-search={}",
       current_dir
